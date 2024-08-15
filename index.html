@@ -1,0 +1,110 @@
+ <!-- !     Email address   Thanks for subscribing! A confirmation email has been sent to ash@loremcompany.com. Please open it and click the button inside to confirm your subscription. Dismiss message  -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile-styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+  </head>
+  <body>
+    <div id="container">
+        <div id="sub-1">
+            <div class="items">
+                <h1>Stay updated!</h1>
+            </div>
+            <div class="items">
+                <p>Join 60,000+ product managers receiving monthly updates on:</p>  
+            </div>
+            <div class="items">
+                <ul>
+                    <li>Product discovery and building what matters</li>
+                    <li>Measuring to ensure updates are a success</li>
+                    <li>And much more!</li>
+                </ul>
+            </div>
+            <div class="items">
+                <form action="submit">
+                    <label for="email">Email adress <span id="warning-text"></span></label>
+                    <br>
+                    <input type="email" id="email" placeholder="email@company.com">
+                    <br>
+                    <button id="btn">
+                        Subscribe to monthly newsletter
+                    </button>
+                </form>
+            </div>    
+        </div>
+        <div id="sub-2">
+            <img src="illustration-sign-up-desktop.svg" alt="illustration image">
+        </div>
+    </div>
+
+    <div id="msg-container">
+        <div>
+            <img src="icon-success.svg" alt="tick" id="tick-mark">
+        </div>
+        <div>
+            <h2 id="thanks-title">
+                Thanks for subscribing!
+                </h2>
+        </div>
+        <div>
+            <p id="mail-text">
+               
+            </p>
+        </div>
+        <div id="dismiss-btn-container">
+            <button id="dismiss-btn">
+                Dismiss message
+            </button>
+        </div>
+
+
+
+    </div>
+
+
+
+
+    <!-- Script -->
+     <script>
+        var submitButton = document.getElementById('btn');
+        var msgContainer = document.getElementById('msg-container');
+        var container = document.getElementById('container');
+        var mailText = document.getElementById('mail-text');
+        var email = document.getElementById('email');
+        var warningText = document.getElementById('warning-text');
+        submitButton.addEventListener('click', function(e){
+            
+            if (email.value.includes('@')){
+                e.preventDefault();
+                msgContainer.style.display = 'flex';
+                container.style.display = 'none';
+                mailText.innerText = "A confirmation email has been sent to " + email.value + ". Please open it and click the button inside to confirm your subscription." ;
+                warningText.innerText = '';
+                
+            }
+            else{
+                warningText.innerText = 'valid email required!';
+                e.preventDefault();
+                email.style.backgroundColor = 'rgba(243, 177, 177, 0.829)';
+                email.style.border = ' 1px solid red'
+            }
+
+        })
+
+
+        var dismissButton = document.getElementById('dismiss-btn');
+        dismissButton.addEventListener('click', function(){
+            msgContainer.style.display = 'none';
+            container.style.display = 'flex'
+
+        })
+     </script>
+
+
+     <!-- script ends here -->
+  </body>
+  </html>
